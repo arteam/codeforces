@@ -1,1 +1,1 @@
-# codeforces
+# Personal solutions of Codeforces exercies 
