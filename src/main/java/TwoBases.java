@@ -22,11 +22,18 @@ public class TwoBases {
         String[] numbers = symbols.split(" ");
         long result = 0;
         for (int i = 0; i < numbers.length; i++) {
-            result += Integer.parseInt(numbers[numbers.length - 1 - i]) * Math.pow(radix, i);
+            result += Integer.parseInt(numbers[numbers.length - 1 - i]) * pow(radix, i);
         }
         return result;
     }
 
+    private long pow(int argument, int power) {
+        long result = 1;
+        for (int i = 0; i < power; i++) {
+            result *= argument;
+        }
+        return result;
+    }
 
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
