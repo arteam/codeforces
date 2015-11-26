@@ -1,6 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.StringJoiner;
+
 import static org.junit.Assert.*;
 
 /**
@@ -41,5 +43,18 @@ public class ConstantRangeTest {
     public void test5() {
         int maxLength = constantRange.getMaxLength(5, "2 4 5 5 5 3");
         Assert.assertEquals(maxLength, 4);
+    }
+
+    @Test
+    public void tl() {
+        StringJoiner stringJoiner = new StringJoiner(" ");
+        int amount = 85897;
+        for (int i = 0; i < amount; i++) {
+            stringJoiner.add("10000");
+        }
+        long time = System.nanoTime();
+        int maxLength = constantRange.getMaxLength(amount, stringJoiner.toString());
+        System.out.println(maxLength);
+        System.out.println((System.nanoTime() - time) / 1000000);
     }
 }

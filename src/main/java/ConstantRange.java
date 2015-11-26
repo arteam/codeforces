@@ -43,14 +43,18 @@ public class ConstantRange {
     }
 
     private Result getRangeLength(int[] sequence, int start) {
-        float m = sequence[start];
+        int min = sequence[start];
+        int max = sequence[start];
         int length = 1;
         for (int j = start + 1; j < sequence.length; j++) {
-            float diff = Math.abs(sequence[j] - m);
-            if (diff > 1) {
+            if (sequence[j] - min > 1 || max - sequence[j] > 1) {
                 return new Result(false, length);
-            } else if (diff == 1) {
-                m = (m + sequence[j]) / 2;
+            }
+
+            if (sequence[j] > min) {
+                max = sequence[j];
+            } else if (sequence[j] < max) {
+                min = sequence[j];
             }
             length++;
         }
