@@ -19,21 +19,26 @@ public class ConvenientForEverybody {
         int s = Integer.parseInt(hours[0]);
         int f = Integer.parseInt(hours[1]);
         int interval = f - s;
-        int maxIntervalPosition = 0;
-        long maxIntervalSum = 0;
         long dynamicSum = 0;
         for (int i = 0; i < interval; i++) {
             dynamicSum += amountOfPeopleInTimezones[i];
         }
+        long maxIntervalSum = dynamicSum;
+        int maxIntervalPosition = s;
+        int currentIntervalPosition = s;
         for (int i = 1; i < amountOfTimezones; i++) {
             dynamicSum = dynamicSum + amountOfPeopleInTimezones[(i + interval - 1) % amountOfTimezones]
                     - amountOfPeopleInTimezones[(i - 1) % amountOfTimezones];
-            if (dynamicSum >= maxIntervalSum) {
-                maxIntervalPosition = i;
+            if (--currentIntervalPosition == 0) {
+                currentIntervalPosition = amountOfTimezones;
+            }
+            if (dynamicSum > maxIntervalSum) {
+                maxIntervalPosition = currentIntervalPosition;
                 maxIntervalSum = dynamicSum;
+            } else if (dynamicSum == maxIntervalSum && maxIntervalPosition > currentIntervalPosition) {
+                maxIntervalPosition = currentIntervalPosition;
             }
         }
-        int localTime = s - maxIntervalPosition;
-        return String.valueOf(localTime > 0 && localTime < amountOfTimezones ? localTime : amountOfTimezones + localTime);
+        return String.valueOf(maxIntervalPosition);
     }
 }
