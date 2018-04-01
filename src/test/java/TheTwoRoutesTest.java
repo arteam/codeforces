@@ -1,43 +1,28 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
 
-import static org.junit.Assert.*;
+import static java.util.Arrays.asList;
+import static org.junit.jupiter.params.provider.Arguments.of;
 
-/**
- * Date: 11/29/15
- * Time: 8:33 PM
- *
- * @author Artem Prigoda
- */
-public class TheTwoRoutesTest {
+class TheTwoRoutesTest {
 
-    @Test
-    public void test1() throws Exception {
-        int result = new TheTwoRoutes().shortestPath(4, 2, Arrays.asList("1 3", "3 4"));
-        assertEquals(result, 2);
+    static Stream<Arguments> data() {
+        return Stream.of(
+                of(4, 2, asList("1 3", "3 4"), 2),
+                of(4, 6, asList("1 2", "1 3", "1 4", "2 3", "2 4", "3 4"), -1),
+                of(5, 5, asList("4 2", "3 5", "4 5", "5 1", "1 2"), 3)
+        );
     }
 
-    @Test
-    public void test2() throws Exception {
-        int result = new TheTwoRoutes().shortestPath(4, 6, Arrays.asList("1 2",
-                "1 3",
-                "1 4",
-                "2 3",
-                "2 4",
-                "3 4")
-        );
-        assertEquals(result, -1);
-    }
-
-    @Test
-    public void test3() throws Exception {
-        int result = new TheTwoRoutes().shortestPath(5, 5, Arrays.asList("4 2",
-                "3 5",
-                "4 5",
-                "5 1",
-                "1 2")
-        );
-        assertEquals(result, 3);
+    @ParameterizedTest
+    @MethodSource("data")
+    void test(int vertexes, int amountEdges, List<String> edges, int result) {
+        Assertions.assertEquals(result, new TheTwoRoutes().shortestPath(vertexes, amountEdges, edges));
     }
 }

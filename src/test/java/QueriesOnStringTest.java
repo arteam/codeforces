@@ -1,36 +1,30 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
-import static org.junit.Assert.*;
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
+import static org.junit.jupiter.params.provider.Arguments.of;
 
-/**
- * Date: 11/27/15
- * Time: 1:29 PM
- *
- * @author Artem Prigoda
- */
-public class QueriesOnStringTest {
+class QueriesOnStringTest {
 
-    QueriesOnString queriesOnString = new QueriesOnString();
-
-    @Test
-    public void test1() throws Exception {
-        String result = queriesOnString.shift("abacaba", Collections.singletonList("3 6 1"));
-        Assert.assertEquals(result, "abbacaa");
+    static Stream<Arguments> data() {
+        return Stream.of(
+                of("abacaba", singletonList("3 6 1"), "abbacaa"),
+                of("abbacaa", singletonList("1 4 2"), "baabcaa"),
+                of("abacaba", asList("3 6 1", "1 4 2"), "baabcaa")
+        );
     }
 
-    @Test
-    public void test2() throws Exception {
-        String result = queriesOnString.shift("abbacaa", Collections.singletonList("1 4 2"));
-        Assert.assertEquals(result, "baabcaa");
-    }
-
-    @Test
-    public void test3() throws Exception {
-        String result = queriesOnString.shift("abacaba", Arrays.asList("3 6 1", "1 4 2"));
-        Assert.assertEquals(result, "baabcaa");
+    @ParameterizedTest
+    @MethodSource("data")
+    void test(String source, List<String> rotations, String result) {
+        Assertions.assertEquals(result, new QueriesOnString().shift(source, rotations));
     }
 }
