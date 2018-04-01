@@ -1,31 +1,17 @@
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.Assert.*;
+class TwoBasesTest {
 
-/**
- * Date: 11/26/15
- * Time: 4:45 PM
- */
-public class TwoBasesTest {
-
-    TwoBases twoBases = new TwoBases();
-
-    @Test
-    public void test1() throws Exception {
-        String result = twoBases.compare(2, "1 0 1 1 1 1", 10, "4 7");
-        Assert.assertEquals(result, "=");
+    @ParameterizedTest
+    @CsvSource({
+            "2, 1 0 1 1 1 1, 10, 4 7, =",
+            "3, 1 0 2, 5, 2 4, <",
+            "16, 15 15 4 0 0 7 10, 9, 4 8 0 3 1 5 0, >"
+    })
+    void test(int xRadix, String xSymbols, int yRadix, String ySymbols, String result) {
+        Assertions.assertEquals(result, new TwoBases().compare(xRadix, xSymbols, yRadix, ySymbols));
     }
 
-    @Test
-    public void test2() throws Exception {
-        String result = twoBases.compare(3, "1 0 2", 5, "2 4");
-        Assert.assertEquals(result, "<");
-    }
-
-    @Test
-    public void test3() throws Exception {
-        String result = twoBases.compare(16, "15 15 4 0 0 7 10", 9, "4 8 0 3 1 5 0");
-        Assert.assertEquals(result, ">");
-    }
 }
