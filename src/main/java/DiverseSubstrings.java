@@ -32,10 +32,10 @@ public class DiverseSubstrings {
         }
         int[] frequencies = new int[128];
         for (int k = i; k <= j; k++) {
-            frequencies[s.charAt(k)] = frequencies[s.charAt(k)] + 1;
+            frequencies[s.charAt(k)]++;
         }
         for (int e : frequencies) {
-            if (e > (j - i + 1) / 2) {
+            if (e > 0 && e > (j - i + 1) / 2) {
                 return false;
             }
         }
