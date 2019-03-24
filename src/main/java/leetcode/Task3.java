@@ -12,16 +12,16 @@ public class Task3 {
     public int lengthOfLongestSubstring(String s) {
         int maxSize = 0;
         for (int i = 0; i < s.length(); i++) {
-            int[] chars = new int[128];
-            chars[s.charAt(i)]++;
+            int[] substringCharIndex = new int[128];
+            substringCharIndex[s.charAt(i)]++;
             for (int j = i + 1; j < s.length(); j++) {
-                if (chars[s.charAt(j)] > 0) {
+                if (substringCharIndex[s.charAt(j)] > 0) {
                     break;
                 }
-                chars[s.charAt(j)]++;
+                substringCharIndex[s.charAt(j)]++;
             }
             int size = 0;
-            for (int c : chars) {
+            for (int c : substringCharIndex) {
                 if (c == 1) {
                     size++;
                 }
