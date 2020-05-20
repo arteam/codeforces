@@ -1,36 +1,54 @@
 package leetcode.concurrency;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class PrintInOrder {
 
-    private volatile String nextCall = "first";
+    private String nextCall = "first";
+    private Lock lock = new ReentrantLock();
+    private Condition first = lock.newCondition();
+    private Condition second = lock.newCondition();
+    private Condition third = lock.newCondition();
 
     public void first(Runnable printFirst) throws InterruptedException {
-        while (true) {
-            if (nextCall.equals("first")) {
-                printFirst.run();
-                nextCall = "second";
-                break;
+        lock.lock();
+        try {
+            while (!nextCall.equals("first")) {
+                first.await();
             }
+            printFirst.run();
+            nextCall = "second";
+            second.signal();
+        } finally {
+            lock.unlock();
         }
     }
 
     public void second(Runnable printSecond) throws InterruptedException {
-        while (true) {
-            if (nextCall.equals("second")) {
-                printSecond.run();
-                nextCall = "third";
-                break;
+        lock.lock();
+        try {
+            while (!nextCall.equals("second")) {
+                second.await();
             }
+            printSecond.run();
+            nextCall = "third";
+            third.signal();
+        } finally {
+            lock.unlock();
         }
     }
 
     public void third(Runnable printThird) throws InterruptedException {
-        while (true) {
-            if (nextCall.equals("third")) {
-                printThird.run();
-                nextCall = "first";
-                break;
+        lock.lock();
+        try {
+            while (!nextCall.equals("third")) {
+                third.await();
             }
+            printThird.run();
+        } finally {
+            lock.unlock();
         }
     }
 
