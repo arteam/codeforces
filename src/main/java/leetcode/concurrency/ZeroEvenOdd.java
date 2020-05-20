@@ -1,5 +1,6 @@
 package leetcode.concurrency;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.IntConsumer;
@@ -9,23 +10,29 @@ public class ZeroEvenOdd {
     private int n;
 
     private String nextCall = "zero";
-    private int counter = 0;
     private Lock lock = new ReentrantLock();
+    private Condition zero = lock.newCondition();
+    private Condition even = lock.newCondition();
+    private Condition odd = lock.newCondition();
 
     public ZeroEvenOdd(int n) {
         this.n = n;
     }
 
     public void zero(IntConsumer printNumber) throws InterruptedException {
-        while (true) {
+        for (int i = 0; i < n; i++) {
             lock.lock();
             try {
-                if (counter >= n) {
-                    break;
+                while (!nextCall.equals("zero")) {
+                    zero.await();
                 }
-                if (nextCall.equals("zero")) {
-                    printNumber.accept(0);
-                    nextCall = counter % 2 == 0 ? "odd" : "even";
+                printNumber.accept(0);
+                if (i % 2 == 0) {
+                    nextCall = "odd";
+                    odd.signal();
+                } else {
+                    nextCall = "even";
+                    even.signal();
                 }
             } finally {
                 lock.unlock();
@@ -34,16 +41,15 @@ public class ZeroEvenOdd {
     }
 
     public void even(IntConsumer printNumber) throws InterruptedException {
-        while (true) {
+        for (int i = 2; i <= n; i += 2) {
             lock.lock();
             try {
-                if (counter >= n) {
-                    break;
+                while (!nextCall.equals("even")) {
+                    even.await();
                 }
-                if (nextCall.equals("even")) {
-                    printNumber.accept(++counter);
-                    nextCall = "zero";
-                }
+                printNumber.accept(i);
+                nextCall = "zero";
+                zero.signal();
             } finally {
                 lock.unlock();
             }
@@ -51,16 +57,15 @@ public class ZeroEvenOdd {
     }
 
     public void odd(IntConsumer printNumber) throws InterruptedException {
-        while (true) {
+        for (int i = 1; i <= n; i += 2) {
             lock.lock();
             try {
-                if (counter >= n) {
-                    break;
+                while (!nextCall.equals("odd")) {
+                    odd.await();
                 }
-                if (nextCall.equals("odd")) {
-                    printNumber.accept(++counter);
-                    nextCall = "zero";
-                }
+                printNumber.accept(i);
+                nextCall = "zero";
+                zero.signal();
             } finally {
                 lock.unlock();
             }
