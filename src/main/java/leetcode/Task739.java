@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Task739 {
 
@@ -9,15 +10,12 @@ public class Task739 {
     }
 
     public int[] dailyTemperatures(int[] temperatures) {
-        int[] daysForWarmerWeather = new int[temperatures.length];
-        for (int i = 0; i < temperatures.length - 1; i++) {
-            for (int j = i + 1; j < temperatures.length; j++) {
-                if (temperatures[j] > temperatures[i]) {
-                    daysForWarmerWeather[i] = j - i;
-                    break;
-                }
-            }
-        }
-        return daysForWarmerWeather;
+        return IntStream.range(0, temperatures.length)
+                .map(i -> IntStream.range(i + 1, temperatures.length)
+                        .filter(j -> temperatures[j] > temperatures[i])
+                        .map(j -> j - i)
+                        .findFirst()
+                        .orElse(0))
+                .toArray();
     }
 }
