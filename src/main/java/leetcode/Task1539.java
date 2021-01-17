@@ -11,7 +11,7 @@ public class Task1539 {
         int missed = 0;
         int foundIndex = 0;
         for (int i = 1; ; i++) {
-            if (i == arr[Math.min(foundIndex, arr.length - 1)]) {
+            if (foundIndex < arr.length && i == arr[foundIndex]) {
                 foundIndex++;
             } else {
                 if (++missed == k) {
