@@ -24,7 +24,7 @@ public class Task1_2 {
         }
         for (int i = 0; i < numbers.size(); i++) {
             for (int j = i + 1; j < numbers.size(); j++) {
-                for (int k = 0; k < numbers.size(); k++) {
+                for (int k = j + 1; k < numbers.size(); k++) {
                     if (numbers.get(i) + numbers.get(j) + numbers.get(k) == 2020) {
                         return numbers.get(i) * numbers.get(j) * numbers.get(k);
                     }
