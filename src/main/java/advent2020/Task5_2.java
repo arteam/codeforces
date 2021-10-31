@@ -41,7 +41,7 @@ public class Task5_2 {
         }).sorted().collect(Collectors.toList());
         for (int i = 0; i < ids.size() - 1; i++) {
             if (ids.get(i + 1) - ids.get(i) == 2) {
-                System.out.println(ids.get(i+1));
+                System.out.println(ids.get(i) + 1);
             }
         }
     }
