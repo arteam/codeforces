@@ -22,7 +22,6 @@ public class Task5 {
                     fromRow = middle;
                 }
             }
-            int row = Math.max(fromRow, toRow);
             int fromSeat = 0;
             int toSeat = 7;
             for (int i = 7; i < 10; i++) {
@@ -34,8 +33,7 @@ public class Task5 {
                     fromSeat = middle;
                 }
             }
-            int seat = Math.max(fromSeat, toSeat);
-            return row * 8 + seat;
+            return toRow * 8 + toSeat;
         }).max().orElse(0));
     }
 }

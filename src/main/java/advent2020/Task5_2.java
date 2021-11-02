@@ -24,7 +24,6 @@ public class Task5_2 {
                     fromRow = middle;
                 }
             }
-            int row = Math.max(fromRow, toRow);
             int fromSeat = 0;
             int toSeat = 7;
             for (int i = 7; i < 10; i++) {
@@ -36,8 +35,7 @@ public class Task5_2 {
                     fromSeat = middle;
                 }
             }
-            int seat = Math.max(fromSeat, toSeat);
-            return row * 8 + seat;
+            return toRow * 8 + toSeat;
         }).sorted().collect(Collectors.toList());
         for (int i = 0; i < ids.size() - 1; i++) {
             if (ids.get(i + 1) - ids.get(i) == 2) {
