@@ -1,1 +1,1 @@
-Personal solutions of Codeforces exercies 
+Personal solutions of Codeforces/AdventOfCode/LeetCode exercies 
