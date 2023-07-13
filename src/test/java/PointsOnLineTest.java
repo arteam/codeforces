@@ -1,9 +1,10 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.BufferedReader;
 import java.io.StringReader;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PointsOnLineTest {
 
@@ -15,6 +16,6 @@ class PointsOnLineTest {
             "'7 4\n1 3 4 9 10 11 12',3"
     })
     void testRun(String input, String output) throws Exception {
-        Assertions.assertEquals(output, new PointsOnLine().run(new BufferedReader(new StringReader(input))));
+        assertEquals(output, new PointsOnLine().run(new BufferedReader(new StringReader(input))));
     }
 }

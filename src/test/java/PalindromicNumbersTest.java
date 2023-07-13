@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -18,7 +17,7 @@ class PalindromicNumbersTest {
     })
     void test(int input, int steps, BigInteger palindrome) {
         PalindromicNumbers.StepsPalindrome result = new PalindromicNumbers().run(input);
-        Assertions.assertEquals(steps, result.steps);
-        Assertions.assertEquals(palindrome, result.palindrome);
+        assertEquals(steps, result.steps);
+        assertEquals(palindrome, result.palindrome);
     }
 }

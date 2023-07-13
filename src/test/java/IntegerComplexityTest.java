@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IntegerComplexityTest {
 
@@ -13,6 +14,6 @@ class IntegerComplexityTest {
             "1234567891011, 2544788"
     })
     void testRun(long input, long output) {
-        Assertions.assertEquals(output, new IntegerComplexity().run(input));
+        assertEquals(output, new IntegerComplexity().run(input));
     }
 }

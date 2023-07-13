@@ -1,15 +1,13 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.of;
 
 class QueriesOnStringTest {
@@ -25,6 +23,6 @@ class QueriesOnStringTest {
     @ParameterizedTest
     @MethodSource("data")
     void test(String source, List<String> rotations, String result) {
-        Assertions.assertEquals(result, new QueriesOnString().shift(source, rotations));
+        assertEquals(result, new QueriesOnString().shift(source, rotations));
     }
 }

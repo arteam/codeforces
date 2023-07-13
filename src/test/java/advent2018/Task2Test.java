@@ -1,6 +1,5 @@
 package advent2018;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -15,7 +14,7 @@ class Task2Test {
     void test() throws IOException {
         try (InputStream inputStream = getClass().getResourceAsStream("task2.txt");
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-            Assertions.assertEquals(7470, new Task2().getChecksum(reader));
+            assertEquals(7470, new Task2().getChecksum(reader));
         }
     }
 }

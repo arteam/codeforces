@@ -1,9 +1,10 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.BufferedReader;
 import java.io.StringReader;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TimetableTest {
 
@@ -16,6 +17,6 @@ class TimetableTest {
             "'4 16 11\n1111011101111111\n0111110111111111\n0011101111011000\n0000010000001000',30"
     })
     void testRun(String input, String output) throws Exception {
-        Assertions.assertEquals(output, new Timetable().run(new BufferedReader(new StringReader(input))));
+        assertEquals(output, new Timetable().run(new BufferedReader(new StringReader(input))));
     }
 }

@@ -1,7 +1,8 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MostPresidentInYearTest {
 
@@ -53,7 +54,7 @@ class MostPresidentInYearTest {
 
     @Test
     void test() {
-        Assertions.assertEquals(
+        assertEquals(
                 List.of(1822, 1823, 1824, 1825, 1826, 1831, 1833, 1834, 1835, 1836, 1837, 1838, 1839, 1840, 1841, 1843, 1844, 1845),
                 new MostPresidentInYear().run(PRESIDENTS));
     }
