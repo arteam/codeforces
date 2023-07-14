@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.of;
 
 class TheTwoRoutesTest {

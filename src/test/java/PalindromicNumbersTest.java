@@ -3,6 +3,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import java.math.BigInteger;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class PalindromicNumbersTest {
 
     @ParameterizedTest
