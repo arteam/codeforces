@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -33,7 +33,7 @@ public class BerOs {
         for (String line : lines) {
             for (int i = 0; i < line.length(); i++) {
                 for (int j = i + 1; j < line.length() + 1; j++) {
-                    reverseIndex.computeIfAbsent(line.substring(i, j), k -> new HashSet<>()).add(line);
+                    reverseIndex.computeIfAbsent(line.substring(i, j), k -> new LinkedHashSet<>()).add(line);
                 }
             }
         }

@@ -49,7 +49,7 @@ class BerOsTest {
                 "      ..a",
                 "a.."
         ));
-        Assertions.assertEquals(Arrays.asList("2 .a", "5 aa", "2 aa", "1 .a", "1 a.", "0 -",
+        Assertions.assertEquals(Arrays.asList("2 .a", "5 .a", "2 aa", "1 .a", "1 a.", "0 -",
                 "1 aaa", "0 -", "0 -", "0 -"), results);
     }
 }
