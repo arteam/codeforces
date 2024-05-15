@@ -17,9 +17,9 @@ public class Task_14 {
                 .map(s -> s.split(" -> "))
                 .collect(Collectors.toMap(e -> e[0], e -> e[1].charAt(0)));
 
-        long[] freqTemplate = new long[128];
+        long[] freqChars = new long[128];
         for (char c : template.toCharArray()) {
-            freqTemplate[c]++;
+            freqChars[c]++;
         }
         Map<String, Long> freqPairs = new HashMap<>();
         for (int i = 0; i < template.length() - 1; i++) {
@@ -31,12 +31,12 @@ public class Task_14 {
                 char element = rules.get(e.getKey());
                 newFreqPairs.merge(e.getKey().substring(0, 1) + element, e.getValue(), Long::sum);
                 newFreqPairs.merge(element + e.getKey().substring(1, 2), e.getValue(), Long::sum);
-                freqTemplate[element] += e.getValue();
+                freqChars[element] += e.getValue();
             }
             freqPairs = newFreqPairs;
         }
-        System.out.println(Arrays.stream(freqTemplate).max().orElse(0) -
-                Arrays.stream(freqTemplate).filter(e -> e > 0).min().orElse(0));
+        System.out.println(Arrays.stream(freqChars).max().orElse(0) -
+                Arrays.stream(freqChars).filter(e -> e > 0).min().orElse(0));
     }
 
 }
