@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WorldCupTest {
 
@@ -16,6 +17,6 @@ class WorldCupTest {
             "32, 25, 28, 2"
     })
     void test(int numberOfTeams, int firstTeamId, int secondTeamId, String result) {
-        Assertions.assertEquals(result, new WorldCup().run(numberOfTeams, firstTeamId, secondTeamId));
+        assertEquals(result, new WorldCup().run(numberOfTeams, firstTeamId, secondTeamId));
     }
 }

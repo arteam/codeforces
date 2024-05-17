@@ -1,13 +1,12 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.params.provider.Arguments.of;
 
 class TheTwoRoutesTest {
@@ -23,6 +22,6 @@ class TheTwoRoutesTest {
     @ParameterizedTest
     @MethodSource("data")
     void test(int vertexes, int amountEdges, List<String> edges, int result) {
-        Assertions.assertEquals(result, new TheTwoRoutes().shortestPath(vertexes, amountEdges, edges));
+        assertEquals(result, new TheTwoRoutes().shortestPath(vertexes, amountEdges, edges));
     }
 }

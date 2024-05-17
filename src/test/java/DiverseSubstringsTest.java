@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DiverseSubstringsTest {
 
@@ -18,6 +19,6 @@ class DiverseSubstringsTest {
             "aaaabbbbb,aaaabbbb",
     })
     void testRun(String input, String expectedOutput) {
-        Assertions.assertEquals(expectedOutput, new DiverseSubstrings().getDiverseSubstring(input).orElse("NO"));
+        assertEquals(expectedOutput, new DiverseSubstrings().getDiverseSubstring(input).orElse("NO"));
     }
 }

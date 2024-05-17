@@ -1,8 +1,9 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ExpeditionTest {
 
@@ -15,7 +16,7 @@ class ExpeditionTest {
             "1, 100, 1",
     })
     void test(int participants, String input, int tenure) {
-        Assertions.assertEquals(tenure, new Expedition().run(participants,
+        assertEquals(tenure, new Expedition().run(participants,
                 Arrays.stream(input.split(" ")).mapToInt(Integer::parseInt)
                         .toArray()));
     }

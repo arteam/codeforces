@@ -1,10 +1,11 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.StringReader;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CheeseBoardTest {
 
@@ -17,6 +18,6 @@ class CheeseBoardTest {
             "'1\nprovolone hard', 1"
     })
     void test(String input, int result) throws IOException {
-        Assertions.assertEquals(result, new CheeseBoard().run(new BufferedReader(new StringReader(input))));
+        assertEquals(result, new CheeseBoard().run(new BufferedReader(new StringReader(input))));
     }
 }

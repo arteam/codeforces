@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ConstantRangeTest {
 
@@ -13,7 +14,7 @@ class ConstantRangeTest {
             "5, 2 4 5 5 5 3, 4",
     })
     void test(int amount, String input, int maxLength) {
-        Assertions.assertEquals(maxLength, new ConstantRange().getMaxLength(amount, input));
+        assertEquals(maxLength, new ConstantRange().getMaxLength(amount, input));
     }
 
 }

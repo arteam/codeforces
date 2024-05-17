@@ -1,8 +1,9 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.stream.Collectors;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmirpTest {
 
@@ -13,7 +14,7 @@ class EmirpTest {
             "999810, 999999, [999853; 999931; 999983]",
     })
     void test(int from, int to, String result) {
-        Assertions.assertEquals(result, new Emirp().getEmirpNumbers(from, to)
+        assertEquals(result, new Emirp().getEmirpNumbers(from, to)
                 .stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining("; ", "[", "]")));

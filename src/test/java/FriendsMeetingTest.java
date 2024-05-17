@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FriendsMeetingTest {
 
@@ -11,7 +12,7 @@ class FriendsMeetingTest {
             "5,10,9"
     })
     void test(int a, int b, int result) {
-        Assertions.assertEquals(result, new FriendsMeeting().run(a, b));
+        assertEquals(result, new FriendsMeeting().run(a, b));
     }
 
 }

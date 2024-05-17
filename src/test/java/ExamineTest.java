@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ExamineTest {
 
@@ -16,6 +17,6 @@ public class ExamineTest {
             "8,'8\n5 1 6 2 7 3 8 4'"
     })
     void testRun(String number, String expectedOutput) {
-        Assertions.assertEquals(expectedOutput, new Examine().run(number));
+        assertEquals(expectedOutput, new Examine().run(number));
     }
 }

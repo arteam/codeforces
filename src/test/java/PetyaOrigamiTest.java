@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PetyaOrigamiTest {
 
@@ -11,6 +12,6 @@ class PetyaOrigamiTest {
             "1 1,15",
     })
     void testRun(String input, long output) {
-        Assertions.assertEquals(output, new PetyaOrigami().solve(input));
+        assertEquals(output, new PetyaOrigami().solve(input));
     }
 }

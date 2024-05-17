@@ -1,8 +1,9 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BerOsTest {
 
@@ -19,7 +20,7 @@ class BerOsTest {
                 "contes.",
                 "st"
         ));
-        Assertions.assertEquals(Arrays.asList(
+        assertEquals(Arrays.asList(
                 "1 contests",
                 "2 test.",
                 "1 test.",
@@ -49,7 +50,7 @@ class BerOsTest {
                 "      ..a",
                 "a.."
         ));
-        Assertions.assertEquals(Arrays.asList("2 .a", "5 .a", "2 aa", "1 .a", "1 a.", "0 -",
+        assertEquals(Arrays.asList("2 .a", "5 .a", "2 aa", "1 .a", "1 a.", "0 -",
                 "1 aaa", "0 -", "0 -", "0 -"), results);
     }
 }

@@ -4,53 +4,8 @@ import java.util.List;
 
 public class MostPresidentInYear {
 
-    private static final String PRESIDENTS = "PRESIDENT, BIRTH DATE, BIRTH PLACE, DEATH DATE, LOCATION OF DEATH\n" +
-            "George Washington, Feb 22 1732, Westmoreland Co. Va., Dec 14 1799,Mount Vernon Va.\n" +
-            "John Adams, Oct 30 1735, Quincy Mass., July 4 1826, Quincy Mass.\n" +
-            "Thomas Jefferson, Apr 13 1743, Albemarle Co. Va., July 4 1826,Albemarle Co. Va.\n" +
-            "James Madison, Mar 16 1751, Port Conway Va., June 28 1836, Orange Co.Va.\n" +
-            "James Monroe, Apr 28 1758, Westmoreland Co. Va., July 4 1831, New York New York\n" +
-            "John Quincy Adams, July 11 1767, Quincy Mass., Feb 23 1848, Washington D.C.\n" +
-            "Andrew Jackson, Mar 15 1767, Lancaster Co. S.C., June 8 1845, Nashville Tennessee\n" +
-            "Martin Van Buren, Dec 5 1782, Kinderhook New York, July 24 1862, Kinderhook New York\n" +
-            "William Henry Harrison, Feb 9 1773, Charles City Co. Va., Apr 4 1841, Washington D.C.\n" +
-            "John Tyler, Mar 29 1790, Charles City Co. Va., Jan 18 1862, Richmond Va.\n" +
-            "James K. Polk, Nov 2 1795, Mecklenburg Co. N.C., June 15 1849, Nashville Tennessee\n" +
-            "Zachary Taylor, Nov 24 1784, Orange County Va., July 9 1850, Washington D.C\n" +
-            "Millard Fillmore, Jan 7 1800, Cayuga Co. New York, Mar 8 1874, Buffalo New York\n" +
-            "Franklin Pierce, Nov 23 1804, Hillsborough N.H., Oct 8 1869, Concord New Hamp.\n" +
-            "James Buchanan, Apr 23 1791, Cove Gap Pa., June 1 1868, Lancaster Pa.\n" +
-            "Abraham Lincoln, Feb 12 1809, LaRue Co. Kentucky, Apr 15 1865, Washington D.C.\n" +
-            "Andrew Johnson, Dec 29 1808, Raleigh North Carolina, July 31 1875, Elizabethton Tenn.\n" +
-            "Ulysses S. Grant, Apr 27 1822, Point Pleasant Ohio, July 23 1885, Wilton New York\n" +
-            "Rutherford B. Hayes, Oct 4 1822, Delaware Ohio, Jan 17 1893, Fremont Ohio\n" +
-            "James A. Garfield, Nov 19 1831, Cuyahoga Co. Ohio, Sep 19 1881, Elberon New Jersey\n" +
-            "Chester Arthur, Oct 5 1829, Fairfield Vermont, Nov 18 1886, New York New York\n" +
-            "Grover Cleveland, Mar 18 1837, Caldwell New Jersey, June 24 1908, Princeton New Jersey\n" +
-            "Benjamin Harrison, Aug 20 1833, North Bend Ohio, Mar 13 1901, Indianapolis Indiana\n" +
-            "William McKinley, Jan 29 1843, Niles Ohio, Sep 14 1901, Buffalo New York\n" +
-            "Theodore Roosevelt, Oct 27 1858, New York New York, Jan 6 1919, Oyster Bay New York\n" +
-            "William Howard Taft, Sep 15 1857, Cincinnati Ohio, Mar 8 1930, Washington D.C.\n" +
-            "Woodrow Wilson, Dec 28 1856, Staunton Virginia, Feb 3 1924, Washington D.C.\n" +
-            "Warren G. Harding, Nov 2 1865, Morrow County Ohio, Aug 2 1923, San Francisco Cal.\n" +
-            "Calvin Coolidge, July 4 1872, Plymouth Vermont, Jan 5 1933, Northampton Mass.\n" +
-            "Herbert Hoover, Aug 10 1874, West Branch Iowa, Oct 20 1964, New York New York\n" +
-            "Franklin Roosevelt, Jan 30 1882, Hyde Park New York, Apr 12 1945, Warm Springs Georgia\n" +
-            "Harry S. Truman, May 8 1884, Lamar Missouri, Dec 26 1972, Kansas City Missouri\n" +
-            "Dwight Eisenhower, Oct 14 1890, Denison Texas, Mar 28 1969, Washington D.C.\n" +
-            "John F. Kennedy, May 29 1917, Brookline Mass., Nov 22 1963, Dallas Texas\n" +
-            "Lyndon B. Johnson, Aug 27 1908, Gillespie Co. Texas, Jan 22 1973, Gillespie Co. Texas\n" +
-            "Richard Nixon, Jan 9 1913, Yorba Linda Cal., Apr 22 1994, New York New York\n" +
-            "Gerald Ford, July 14 1913, Omaha Nebraska, Dec 26 2006, Rancho Mirage Cal.\n" +
-            "Jimmy Carter, Oct 1 1924, Plains Georgia, ,\n" +
-            "Ronald Reagan, Feb 6 1911, Tampico Illinois, June 5 2004, Los Angeles Cal.\n" +
-            "George Bush, June 12 1924, Milton Mass., ,\n" +
-            "Bill Clinton, Aug 19 1946, Hope Arkansas, ,\n" +
-            "George W. Bush, July 6 1946, New Haven Conn., ,\n" +
-            "Barack Obama, Aug 4 1961, Honolulu Hawaii, ,";
-
-    public static void main(String[] args) {
-        String[] rows = PRESIDENTS.split("\n");
+    public List<Integer> run(String presidents) {
+        String[] rows = presidents.split("\n");
         int currentYear = LocalDate.now().getYear();
         int[] yearAmountOfPresidents = new int[currentYear + 1];
         for (int i = 1; i < rows.length; i++) {
@@ -75,6 +30,6 @@ public class MostPresidentInYear {
                 mostFrequentYears.add(i);
             }
         }
-        System.out.println(mostFrequentYears);
+        return mostFrequentYears ;
     }
 }

@@ -1,6 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TwoBasesTest {
 
@@ -11,7 +12,7 @@ class TwoBasesTest {
             "16, 15 15 4 0 0 7 10, 9, 4 8 0 3 1 5 0, >"
     })
     void test(int xRadix, String xSymbols, int yRadix, String ySymbols, String result) {
-        Assertions.assertEquals(result, new TwoBases().compare(xRadix, xSymbols, yRadix, ySymbols));
+        assertEquals(result, new TwoBases().compare(xRadix, xSymbols, yRadix, ySymbols));
     }
 
 }
